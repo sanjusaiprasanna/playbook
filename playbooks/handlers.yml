@@ -1,0 +1,15 @@
+---
+- hosts: demo
+  become: yes
+  tasks:
+   - name: Install Git
+     apt: name=git state=present
+   - name: Install Apache2
+     apt: name=apache2 state=present
+     notify: Run Apache2
+   - name: Print Hi
+     command: echo Hi
+     notify: Run Apache2
+  handlers:
+   - name: Run Apache2
+     service: name=apache2 state=started

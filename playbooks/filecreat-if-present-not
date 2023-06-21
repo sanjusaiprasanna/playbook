@@ -1,0 +1,10 @@
+---
+- hosts: demo
+  tasks:
+  - name: get stats
+    stat: path=/tmp/thefile
+    register: st
+  - debug: var=st
+  - name: Create file if it doesnt exist
+    shell: touch /tmp/thefile
+    when: not st.stat.exists

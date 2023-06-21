@@ -1,0 +1,12 @@
+---
+- hosts: demo
+  become: yes
+  vars:
+   - mypkg: apache2
+  tasks:
+   - name: Install Git
+     apt: name=git state=present
+   - name: Install Apache2
+     apt: name={{mypkg}} state=present
+   - name: Run Apache2
+     service: name={{mypkg}} state=started

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+  - name: Print
+    command: echo Hi-Adam
+    run_once: true
+    delegate_to: master
+  - name: EOT
+    command: echo EOT
+

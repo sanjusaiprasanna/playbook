@@ -1,0 +1,8 @@
+---
+- hosts: demo
+  become: yes
+  vars_files:
+   - myvars.yml
+  tasks:
+   - name: Print Name
+     command: echo {{myname}}

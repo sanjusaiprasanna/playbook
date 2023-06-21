@@ -1,0 +1,8 @@
+- hosts: demo
+  become: yes
+  tasks:
+    - name: add a list of users
+      user: name={{ item.name }} groups={{ item.groups }}  state=present
+      with_items:
+        - { name: testuser1, groups: nogroup }
+        - { name: testuser2, groups: root }

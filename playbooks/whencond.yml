@@ -1,0 +1,22 @@
+--- # When playbook example
+- hosts: demo
+  become: yes
+  vars:
+    myvalue: false
+  tasks:
+    - name: Install apache for Debian
+      apt: name=apache2 state=present
+      when: ansible_os_family == "Debian"
+    - name: Install apache for Redhat
+      yum: name=httpd state=present
+      when: ansible_os_family == "RedHat"
+    - name: print numbers greater than 5
+      command: echo {{ item }}
+      with_items: [ 0, 2, 4, 6, 8, 10 ]
+      when: item > 5
+    - name: Boolean true
+      command: echo true
+      when: myvalue
+    - name: Boolean false
+      command: echo false
+      when: not myvalue

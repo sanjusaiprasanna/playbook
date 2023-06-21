@@ -1,0 +1,12 @@
+---
+- hosts: demo
+  become: yes
+  tasks:
+  - name: Create User
+    user: name={{item}} state=present
+    with_items:
+      - Robin
+      - Balkar
+      - Om
+      - Karthick
+      - Harshitha

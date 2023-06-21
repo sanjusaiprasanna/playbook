@@ -1,0 +1,10 @@
+---
+- hosts: demo
+  become: yes
+  tasks:
+   - name: Print Hi
+     command: echo Hi
+     register: output
+   - debug: var=output.rc
+   - debug: var=output.stdout
+     
